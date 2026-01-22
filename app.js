@@ -2,17 +2,18 @@ console.log("JS is running")
 let workflow = {};
 let currentNode = "start";
 
-async function loadWorkflow() {
-  const response = await fetch("workflows/data.json")
-  .then(r => r.json())
-  .then(d => {
-    console.log("Loaded JSON:", d);
-    workflow = d;
+async function loadWorkflow(filename = "start.json") {
+  try {
+    const response = await fetch("workflows/" + filename);
+    const data = await response.json();
+
+    console.log("Loaded JSON:", data);
+
+    workflow = data;
     renderNode("start");
-  })
-  .catch(e => console.error("JSON error:", e));
-  workflow = await response.json();
-  renderNode(currentNode);
+  } catch (e) {
+    console.error("JSON error:", e);
+  }
 }
 
 function renderNode(nodeKey) {
@@ -36,7 +37,13 @@ function renderNode(nodeKey) {
   node.options.forEach(option => {
     const btn = document.createElement("button");
     btn.textContent = option.label;
-    btn.onclick = () => renderNode(option.next);
+    btn.onclick = () => {
+  if (option.file) {
+    loadWorkflow(option.file);   // loads login.json, printer.json, etc.
+  } else {
+    renderNode(option.next);     // moves inside the same workflow
+  }
+};
     optionsEl.appendChild(btn);
   });
 }

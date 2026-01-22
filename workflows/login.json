@@ -1,0 +1,58 @@
+{
+  "start": {
+    "title": "Can the user log into their machine?",
+    "options": [
+      { "label": "Yes", "next": "login_success" },
+      { "label": "No", "next": "login_failed" },
+      { "label": "Back to Main Menu", "file": "start.json" }
+    ]
+  },
+  "login_success": {
+    "title": "User can log in successfully. What resource can they not log into?",
+    "options": [
+        { "label": "Outlook", "next": "email_issue" },
+        { "label": "VPN", "next": "vpn_issue" },
+        { "label": "Mobility Advisor", "next": "MA_issue" },
+        { "label": "Back to Main Menu", "file": "start.json" }
+    ]
+  },
+  "login_failed": {
+    "title": "What is the error received?",
+    "options": [
+        { "label": "Account Blocked", "next": "account_blocked" },
+        { "label": "Account Locked", "next": "account_locked" },
+        { "label": "Trust Relationship", "next": "trust_issue" },
+        { "label": "Back to Main Menu", "file": "start.json" }
+    ]
+  },
+  "account_blocked": {
+    "title": "Reach out to security for next steps.",
+    "options": [
+        { "label": "Back to Login Failed Workflow", "next": "login_failed" },
+        { "label": "Back to Main Menu", "file": "start.json" }
+    ]
+  },
+    "account_locked": {
+        "title": "Login as local admin and walk user through sspr.",
+        "options": [
+            { "label": "Back to Login Failed Workflow", "next": "login_failed" },
+            { "label": "Back to Main Menu", "file": "start.json" }
+        ]
+    },
+    "trust_issue": {
+        "title": "Is the machine enabled in on prem AD?",
+        "options": [
+            { "label": "Yes", "next": "ad_enabled" },
+            { "label": "No", "next": "not_enabled" },           
+            { "label": "Back to Main Menu", "file": "start.json" }
+        ]
+    },
+    "not_enabled": {
+        "title": "Enable it.",
+        "options": [
+            { "label": "Back to Login Failed Workflow", "next": "login_failed" },
+            { "label": "Back to Main Menu", "file": "start.json" }
+        ]
+    }
+
+}
