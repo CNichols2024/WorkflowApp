@@ -1,0 +1,10 @@
+{
+  "start": {
+    "title": "What issue are you troubleshooting?",
+    "options": [
+      { "label": "Login Workflow", "file": "login.json" },
+      { "label": "Printer Workflow", "file": "printer.json" },
+      { "label": "Network Workflow", "file": "network.json" }
+    ]
+  }
+}
