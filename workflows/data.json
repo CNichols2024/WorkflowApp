@@ -1,0 +1,44 @@
+{
+  "start": {
+    "title": "What issue are you troubleshooting?",
+    "options": [
+      { "label": "Login Issue", "next": "login_issue" },
+      { "label": "Printer Issue", "next": "printer_issue" },
+      { "label": "Network Issue", "next": "network_issue" },
+      { "label": "Mobility Advisor", "next": "mobility_advisor" }
+    ]
+  },
+
+  "Login_Workflow_Note": {
+      "title": "this is the start of Login Workflow"
+    },
+
+  "login_issue": {
+      "title": "Can the user log into their computer?",
+      "options": [
+          { "label": "Yes", "next": "login_yes" },
+          { "label": "No", "next": "login_no" }
+      ]
+  },
+  "login_yes": {
+      "title": "What resource is this for?",
+      "options": [
+          { "label": "Mobility Advisor", "next": "sso_issue" },
+          { "label": "LastPass", "next": "last_pass" },
+          { "label": "Funding Portal", "next": "sso_issue" },
+          { "label": "Other", "next": "external_resources" },
+          { "label": "Back to Start", "next": "start" }
+      ]
+  },
+  "external_resources": {
+      "title": "This section is still under construction. Please reach out to your team for assistance.",
+      "options": [
+          { "label": "Back to Start", "next": "start" }
+      ]
+  },
+
+  "Printer_Workflow": {
+      "title": "this is the start of Printer Workflow"
+  }
+  
+}
